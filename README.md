@@ -37,6 +37,14 @@ Requires Node.js 20 or newer. The quickest way is `npx`, no clone needed:
 claude mcp add crypto-pulse -- npx -y crypto-pulse-mcp
 ```
 
+On Windows, run it from `cmd` (PowerShell swallows the `--`) and wrap `npx` so Claude Code can start it:
+
+```bat
+claude mcp add crypto-pulse -- cmd /c npx -y crypto-pulse-mcp
+```
+
+Add `-s user` to make it available in every folder, not just the current project.
+
 Published on [npm](https://www.npmjs.com/package/crypto-pulse-mcp) and in the official MCP Registry as
 `io.github.markankamaransheogarat-sys/crypto-pulse-mcp`.
 
@@ -63,6 +71,8 @@ Add to `claude_desktop_config.json`:
   }
 }
 ```
+
+On Windows use `"command": "cmd"` with `"args": ["/c", "npx", "-y", "crypto-pulse-mcp"]`.
 
 ### Claude Code
 
