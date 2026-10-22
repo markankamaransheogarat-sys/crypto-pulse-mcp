@@ -100,6 +100,9 @@ export async function getDefiTvl(args: DefiTvlArgs) {
         change1dPct: round(p.change1dPct, 2),
         change7dPct: round(p.change7dPct, 2),
       })),
+      notes: [
+        "Protocol TVLs can add up to more than the chain total: vaults and curators deposit into lending pools, so the same money shows under both. DefiLlama counts it once in the chain figure.",
+      ],
       source: "DefiLlama",
       asOf: new Date().toISOString(),
     };

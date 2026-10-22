@@ -202,10 +202,12 @@ describe("get_defi_tvl", () => {
       chain: string;
       rank: number;
       topProtocols: Array<{ name: string }>;
+      notes: string[];
     };
     expect(result.chain).toBe("Stellar");
     expect(result.rank).toBe(3);
     expect(result.topProtocols.map((p) => p.name)).toEqual(["Blend Pools V2"]);
+    expect(result.notes[0]).toMatch(/more than the chain total/);
   });
 
   it("suggests real chains for an unknown one", async () => {
