@@ -31,7 +31,16 @@ Asked in Claude Code with the server connected (snapshot, 22 Oct 2026):
 
 ## Install
 
-Requires Node.js 20 or newer.
+Requires Node.js 20 or newer. The quickest way is `npx`, no clone needed:
+
+```bash
+claude mcp add crypto-pulse -- npx -y crypto-pulse-mcp
+```
+
+Published on [npm](https://www.npmjs.com/package/crypto-pulse-mcp) and in the official MCP Registry as
+`io.github.markankamaransheogarat-sys/crypto-pulse-mcp`.
+
+To run it from source instead:
 
 ```bash
 git clone https://github.com/markankamaransheogarat-sys/crypto-pulse-mcp.git
@@ -48,8 +57,8 @@ Add to `claude_desktop_config.json`:
 {
   "mcpServers": {
     "crypto-pulse": {
-      "command": "node",
-      "args": ["/absolute/path/to/crypto-pulse-mcp/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "crypto-pulse-mcp"]
     }
   }
 }
