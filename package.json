@@ -1,6 +1,7 @@
 {
   "name": "crypto-pulse-mcp",
   "version": "0.1.0",
+  "mcpName": "io.github.markankamaransheogarat-sys/crypto-pulse-mcp",
   "description": "Read-only crypto market data for AI assistants over MCP: cross-exchange prices, funding and open interest, market overview, DeFi TVL and stablecoin flows. No API keys.",
   "type": "module",
   "license": "MIT",
@@ -41,5 +42,14 @@
     "@types/node": "^26.6.5",
     "typescript": "^7.0.2",
     "vitest": "^5.0.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markankamaransheogarat-sys/crypto-pulse-mcp.git"
+  },
+  "homepage": "https://github.com/markankamaransheogarat-sys/crypto-pulse-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/markankamaransheogarat-sys/crypto-pulse-mcp/issues"
+  },
+  "author": "markankamaransheogarat-sys"
 }
