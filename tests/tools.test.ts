@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { clearCache } from "../src/http.js";
 import { getDefiTvl } from "../src/tools/defi.js";
 import { getDerivatives } from "../src/tools/derivatives.js";
-import { getMarketOverview } from "../src/tools/market.js";
+import { getMarketOverview, isPegged } from "../src/tools/market.js";
 import { getPrice } from "../src/tools/price.js";
 import { getStablecoins } from "../src/tools/stablecoins.js";
 import { bybitTicker, mockFetch, status, type FetchMock } from "./helpers.js";
@@ -146,6 +146,28 @@ describe("get_market_overview", () => {
     expect(mock.calls[0]).toContain("vs_currency=usd");
     expect(result.coins[0]).toMatchObject({ symbol: "BTC", change24hPct: 1.23 });
     expect(result.breadth24h).toEqual({ rising: 1, falling: 1, of: 2 });
+  });
+
+  it("leaves stablecoins out of the breadth count", async () => {
+    mock = mockFetch([
+      [
+        "coingecko.com",
+        [
+          { market_cap_rank: 1, symbol: "btc", name: "Bitcoin", current_price: 80000, price_change_percentage_24h: -1.7, market_cap: 1, total_volume: 1, ath_change_percentage: -35 },
+          { market_cap_rank: 3, symbol: "usdt", name: "Tether", current_price: 0.9992, price_change_percentage_24h: 0.01, market_cap: 1, total_volume: 1, ath_change_percentage: -24 },
+          { market_cap_rank: 7, symbol: "usdc", name: "USDC", current_price: 0.9997, price_change_percentage_24h: 0.02, market_cap: 1, total_volume: 1, ath_change_percentage: -1 },
+        ],
+      ],
+    ]);
+    const result = await getMarketOverview({ limit: 3, vsCurrency: "usd", sortBy: "market_cap" });
+    expect(result.breadth24h).toEqual({ rising: 0, falling: 1, of: 1 });
+    expect(result.coins).toHaveLength(3);
+  });
+
+  it("does not guess pegs for non-USD quotes", () => {
+    expect(isPegged(1, 0.01, "eur")).toBe(false);
+    expect(isPegged(1.01, 0.1, "usd")).toBe(true);
+    expect(isPegged(1.01, 3, "usd")).toBe(false);
   });
 });
 

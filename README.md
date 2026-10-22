@@ -19,6 +19,16 @@ Example prompts once it is connected:
 - "How big is Stellar DeFi, and which protocols lead it?"
 - "Is stablecoin supply growing or shrinking this week?"
 
+## Example
+
+Asked in Claude Code with the server connected (snapshot, 22 Oct 2026):
+
+> Is SOL at a premium on Bybit vs Binance? What is BTC funding doing? How big is Stellar DeFi?
+
+- **SOL (`get_price`):** no premium. $103.82 on Bybit, $103.83 on Binance, about 0.01% apart.
+- **BTC funding (`get_derivatives`):** slightly negative, -0.0041% per 8h on Bybit (about -4.5% a year), so shorts are paying longs. Longs do not look crowded.
+- **Stellar DeFi (`get_defi_tvl`):** about $241M TVL, #18 among chains. Top protocol: Blend Pools V2, about $140M.
+
 ## Install
 
 Requires Node.js 20 or newer.
