@@ -1,7 +1,7 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.markankamaransheogarat-sys/crypto-pulse-mcp",
-  "description": "Read-only crypto market data for AI assistants: prices, funding, open interest, DeFi TVL, stablecoin flows. No API keys.",
+  "description": "Read-only crypto market data: prices, funding, open interest, DeFi TVL, stablecoins. No API keys.",
   "repository": {
     "url": "https://github.com/markankamaransheogarat-sys/crypto-pulse-mcp",
     "source": "github"
